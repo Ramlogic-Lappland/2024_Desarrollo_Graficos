@@ -15,4 +15,8 @@
 *.mod
 *.smod
 
+debug/
+x64/
+.vs/
+
 
