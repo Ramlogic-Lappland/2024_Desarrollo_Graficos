@@ -15,8 +15,8 @@
 *.mod
 *.smod
 
-debug/
-x64/
-.vs/
+Engine/Debug/
+Engine/x64/
+Engine/.vs/
 
 
