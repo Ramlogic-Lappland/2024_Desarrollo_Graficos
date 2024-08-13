@@ -6,9 +6,10 @@ int createWindow (void)
 
 GLFWwindow* window;
 
+
+
 /* Initialize the library */
-if (!glfwInit())
-return -1;
+if (!glfwInit()) return -1;
 
 /* Create a windowed mode window and its OpenGL context */
 window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
@@ -20,6 +21,8 @@ if (!window)
 
 /* Make the window's context current */
 glfwMakeContextCurrent(window);
+
+if (glewInit() != GLEW_OK) std::cout << "ERROR! GLEW WASN´T INITIALIZED CORRECTLY" << std::endl;
 
 /* Loop until the user closes the window */
 while (!glfwWindowShouldClose(window))
@@ -46,4 +49,7 @@ int renderer(void)
      0.5f, -0.5f, 0.0f,
      0.0f,  0.5f, 0.0f
     };
+
+
+    return 0;
 }
