@@ -1,6 +1,4 @@
 ﻿  BaseGame.cpp
-  Input.cpp
-  Renderer.cpp
   Window.cpp
   Generando código...
   LINK : no se encontró C:\Users\Aula 1\Desktop\2024_Desarrollo_Graficos\Engine\Debug\Engine.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
