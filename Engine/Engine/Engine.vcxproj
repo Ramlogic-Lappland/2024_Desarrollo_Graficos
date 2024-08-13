@@ -21,13 +21,13 @@
   <ItemGroup>
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
