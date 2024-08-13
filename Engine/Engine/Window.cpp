@@ -1,12 +1,10 @@
 #include "Window.h"
-
+//#include"GL/glew.h"
 
 int createWindow (void)
 {
 
 GLFWwindow* window;
-
-
 
 /* Initialize the library */
 if (!glfwInit()) return -1;
