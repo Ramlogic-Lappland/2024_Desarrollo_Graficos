@@ -1,4 +1,5 @@
 #pragma once
-#include "Shape.h"
-#include "Sprite.h"
-#include "Tile.h"
+#include "../Entity.h"
+#include "Shape/Shape.h"
+#include "Sprite/Sprite.h"
+#include "Tile/Tile.h"

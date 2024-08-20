@@ -4,4 +4,3 @@
 #include <GLFW/glfw3.h>
 
 int createWindow();
-float triangle(void);
