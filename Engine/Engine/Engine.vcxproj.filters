@@ -22,6 +22,24 @@
     <Filter Include="Renderer">
       <UniqueIdentifier>{3d9ee844-bdfb-45a0-8711-ce9e69675ee3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{b937318a-6dd3-47e3-b728-80bfe8f748bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Entity">
+      <UniqueIdentifier>{36c6d989-cb8b-4291-8171-c3c3d63115be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Entity\Entity2D">
+      <UniqueIdentifier>{bc594b4e-8310-4e7a-87ac-7e167a20d9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Entity\Entity2D\Shape">
+      <UniqueIdentifier>{d9565981-9795-40a4-9ee5-7060ee7ca786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Entity\Entity2D\Sprite">
+      <UniqueIdentifier>{4a1e2265-e4e1-45c4-b6f6-3c667d6964c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Entity\Entity2D\Tile">
+      <UniqueIdentifier>{739201bc-4c68-45bf-ac2a-a09734a70f88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseGame.cpp">
@@ -36,6 +54,21 @@
     <ClCompile Include="Renderer\Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Renderer\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Renderer\Entity\Entity2D\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D.cpp">
+      <Filter>Renderer\Entity\Entity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Renderer\Entity\Entity2D\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Renderer\Entity\Entity2D\Tile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -49,6 +82,21 @@
     </ClInclude>
     <ClInclude Include="BaseGame.h">
       <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Renderer\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Renderer\Entity\Entity2D\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity2D.h">
+      <Filter>Renderer\Entity\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Renderer\Entity\Entity2D\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Renderer\Entity\Entity2D\Tile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,26 +23,28 @@ glfwMakeContextCurrent(window);
 
 if (glewInit() != GLEW_OK) std::cout << "ERROR! GLEW WASN´T INITIALIZED CORRECTLY" << std::endl;
 
-/* Loop until the user closes the window */
-
-float positions[6];
 unsigned int buffer;
 
-positions[6] = triangle();
+
+float positions[] = {
+-0.5f, -0.5f, 0.0f,
+ 0.5f, -0.5f, 0.0f,
+ 0.0f,  0.5f, 0.0f
+};
 
 glGenBuffers(1, &buffer);
 glBindBuffer(GL_ARRAY_BUFFER, buffer);
 glBufferData(GL_ARRAY_BUFFER,6* sizeof(float), positions, GL_STATIC_DRAW);
 
+glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-
-
+/* Loop until the user closes the window */
 while (!glfwWindowShouldClose(window))
 {
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
 
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
     /* Swap front and back buffers */
@@ -58,15 +60,7 @@ glfwTerminate();
 return 0;
 }
 
- 
-float triangle(void)
-{
-    float vertices[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
-    };
 
 
-    return vertices[6];
-}
+
+
