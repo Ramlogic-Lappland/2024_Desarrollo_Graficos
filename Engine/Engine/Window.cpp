@@ -51,7 +51,6 @@ while (!glfwWindowShouldClose(window))
     glfwSwapBuffers(window);
 
 
-
     /* Poll for and process events */
     glfwPollEvents();
 }
