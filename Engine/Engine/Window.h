@@ -9,4 +9,4 @@
 
 
 int createWindow();
-float triangle(void);
+
