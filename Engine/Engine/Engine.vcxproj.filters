@@ -54,19 +54,19 @@
     <ClCompile Include="Renderer\Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="Renderer\Entity\Entity.cpp">
       <Filter>Renderer\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="Renderer\Entity\Entity2D\Shape\Shape.cpp">
       <Filter>Renderer\Entity\Entity2D\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="Entity2D.cpp">
+    <ClCompile Include="Renderer\Entity\Entity2D\Entity2D.cpp">
       <Filter>Renderer\Entity\Entity2D</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
+    <ClCompile Include="Renderer\Entity\Entity2D\Sprite\Sprite.cpp">
       <Filter>Renderer\Entity\Entity2D\Sprite</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
+    <ClCompile Include="Renderer\Entity\Entity2D\Tile\Tile.cpp">
       <Filter>Renderer\Entity\Entity2D\Tile</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,19 +83,19 @@
     <ClInclude Include="BaseGame.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Renderer\Entity\Entity.h">
       <Filter>Renderer\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="Renderer\Entity\Entity2D\Shape\Shape.h">
       <Filter>Renderer\Entity\Entity2D\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="Entity2D.h">
+    <ClInclude Include="Renderer\Entity\Entity2D\Entity2D.h">
       <Filter>Renderer\Entity\Entity2D</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
+    <ClInclude Include="Renderer\Entity\Entity2D\Sprite\Sprite.h">
       <Filter>Renderer\Entity\Entity2D\Sprite</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="Renderer\Entity\Entity2D\Tile\Tile.h">
       <Filter>Renderer\Entity\Entity2D\Tile</Filter>
     </ClInclude>
   </ItemGroup>
