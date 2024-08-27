@@ -1,4 +1,7 @@
 #pragma once
 #include <iostream>
-#include "Window.h"
-#include "Input.h"
+#include "GL/glew.h"
+#include <GLFW/glfw3.h>
+
+
+extern GLFWwindow* window;

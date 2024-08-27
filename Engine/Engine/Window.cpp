@@ -1,55 +1,22 @@
 #include "Window.h"
-//#include"GL/glew.h"
+#include "Input.h"
 
-int createWindow (void)
+GLFWwindow* createWindow(int width, int height, const char* name)
 {
+    /* Initialize the library */
+    if (!glfwInit()) { std::cout << "glf couldn´t be Initialized" << std::endl; glfwTerminate();};
 
-GLFWwindow* window;
+    /* Create a windowed mode window and its OpenGL context */
+    GLFWwindow* window = glfwCreateWindow(width, height, name, NULL, NULL);
+    
+    if (!window)
+    {
+        std::cout << "Window couldn´t be created" << std::endl;
+        glfwTerminate();
+    }
 
-/* Initialize the library */
-if (!glfwInit()) return -1;
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
 
-/* Create a windowed mode window and its OpenGL context */
-window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-
-if (!window)
-{
-    glfwTerminate();
-    return -1;
+    return window;
 }
-
-/* Make the window's context current */
-glfwMakeContextCurrent(window);
-
-if (glewInit() != GLEW_OK) std::cout << "ERROR! GLEW WASN´T INITIALIZED CORRECTLY" << std::endl;
-
-Renderer renderer;
-renderer.initBuffers();
-
-
-/* Loop until the user closes the window */
-while (!glfwWindowShouldClose(window))
-{
-    /* Render here */
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    renderer.Render();
-
-
-
-    /* Swap front and back buffers */
-    glfwSwapBuffers(window);
-
-
-    /* Poll for and process events */
-    glfwPollEvents();
-}
-
-glfwTerminate();
-return 0;
-}
-
-
-
-
-
