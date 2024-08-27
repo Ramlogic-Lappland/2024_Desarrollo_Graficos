@@ -18,5 +18,7 @@
 Engine/Debug/
 Engine/x64/
 Engine/.vs/
+Engine/Engine/x64/
+Engine/Engine/Debug/
 
 
