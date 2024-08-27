@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    GLFWwindow* window = createWindow(1024, 768, "Engine");
+    GLFWwindow* window = createWindow(1024, 768, "Engine"); //width - height - name
 
     if (glewInit() != GLEW_OK) std::cout << "ERROR! GLEW WASN´T INITIALIZED CORRECTLY" << std::endl;
 
@@ -18,6 +18,13 @@ int main(void)
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+         
+        if (GetKeyState(VK_ESCAPE) & 0x8000) // escape to close
+        {
+            closeEngine();
+            return 0;
+        }
+
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -33,4 +40,19 @@ int main(void)
 
     glfwTerminate();
     return 0;
+}
+
+void initEngine()
+{
+
+}
+
+void deInitEngine()
+{
+
+}
+
+void closeEngine()
+{
+    glfwTerminate();
 }
