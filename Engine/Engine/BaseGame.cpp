@@ -6,6 +6,11 @@
 
 #include "Renderer/Renderer.h"
 
+static unsigned int CompileShader(unsigned int type, const std::string& source);
+
+static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+
+
 int main(void)
 {
     GLFWwindow* window = createWindow(1024, 768, "Engine"); //width - height - name
@@ -15,6 +20,8 @@ int main(void)
     Renderer renderer;
     renderer.initBuffers();
 
+
+    renderer.initShader();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -39,6 +46,7 @@ int main(void)
         glfwPollEvents();
     }
 
+    
     glfwTerminate();
     return 0;
 }
@@ -57,3 +65,4 @@ void closeEngine()
 {
     glfwTerminate();
 }
+
