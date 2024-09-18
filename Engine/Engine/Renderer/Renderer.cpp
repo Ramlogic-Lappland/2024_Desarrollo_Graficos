@@ -26,6 +26,20 @@ void Renderer::initBuffers() {
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); //renderer
 }
 
+void Renderer::Render() {
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+
+// Below all belongs to shader ---------------------------------------
+
+unsigned int shader;
+
+// Shader Initialization ---------------------------------------------
+
 void Renderer::initShader() {
 
     std::string vertexShader =
@@ -51,20 +65,13 @@ void Renderer::initShader() {
 
 
 
-    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    shader = CreateShader(vertexShader, fragmentShader);
     glUseProgram(shader);
 
 
 }
 
-
-void Renderer::Render() {
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
+// Shader builder   ---------------------------------------------
 
 static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
@@ -78,15 +85,14 @@ static unsigned int CreateShader(const std::string& vertexShader, const std::str
     glLinkProgram(program);
     glValidateProgram(program);
 
-    //glDeattachShader();
-
     glDeleteShader(vs);
     glDeleteShader(fs);
 
     return program;
 }
 
-// Shader
+// Shader Compiler  ---------------------------------------------
+
 static unsigned int CompileShader(unsigned int type, const std::string& source)
 {
     unsigned int id = glCreateShader(type);

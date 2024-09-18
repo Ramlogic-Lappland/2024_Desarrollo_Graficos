@@ -47,6 +47,7 @@ int main(void)
     }
 
     
+    glDeleteProgram(shader);
     glfwTerminate();
     return 0;
 }
