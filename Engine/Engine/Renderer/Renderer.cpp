@@ -1,5 +1,9 @@
 #include "Renderer.h"
 
+#include <iostream>
+
+#include "shader.h"
+
 Renderer::Renderer(){
 
 }
@@ -8,29 +12,49 @@ Renderer::~Renderer() {
 
 }
 
+
+
 void Renderer::initBuffers() {
 
 	unsigned int buffer;
 
-	float triangle[6] = {
+    float positions[] = {
     -0.5f, -0.5f,
-     0.0f,  0.5f,
-     0.5f, -0.5f
-	};
+     0.5f, -0.5f,
+     0.5f,  0.5f,
+    -0.5f,  0.5f,
+    };
+
+    unsigned int indicesSquare[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    unsigned int indicesTriangle[] = {
+    0, 1, 2,
+    };
 
 	glGenBuffers(1, &buffer); //renderer
-	glBindBuffer(GL_ARRAY_BUFFER, buffer); //renderer
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), triangle, GL_STATIC_DRAW); //renderer
+	glBindBuffer(GL_ARRAY_BUFFER, buffer); //renderer   
+	glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW); //renderer a square (*2) no (*2) = triangle
 
 	glEnableVertexAttribArray(0);  //renderer
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); //renderer
+
+    unsigned int ibo;
+    glGenBuffers(1, &ibo); //renderer
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); //renderer
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indicesTriangle, GL_STATIC_DRAW); // change indice type to draw square or triangle
 }
+
 
 void Renderer::Render() {
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    //glDrawArrays(GL_TRIANGLES, 0, 3);  // renders just a triangle
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);   // renders a  square and triangle
 }
 
 
@@ -42,32 +66,17 @@ unsigned int shader;
 
 void Renderer::initShader() {
 
-    std::string vertexShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) in vec4 position;"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "gl_Position = position;\n"
-        "}\n";
+    shaderProgramSource source = ParseShader("Renderer/Shader/Basic.shader");
 
-
-    std::string fragmentShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) out vec4 color;"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "color = vec4(1.0, 0.0, 0.0, 1.0);\n"
-        "}\n";
-
-
-
-    shader = CreateShader(vertexShader, fragmentShader);
+    shader = CreateShader(source.VertexSource, source.FragmentSource);
     glUseProgram(shader);
 
+    /* test if is picking up shader
+    std::cout << "VERTEX" << std::endl;
+    std::cout << source.VertexSource << std::endl;
+    std::cout << "FRAGMENT" << std::endl;
+    std::cout << source.FragmentSource << std::endl;
+    */
 
 }
 
@@ -120,6 +129,8 @@ static unsigned int CompileShader(unsigned int type, const std::string& source)
 
     return id;
 }
+
+
 
 
 

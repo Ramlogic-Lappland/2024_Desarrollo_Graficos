@@ -1,6 +1,5 @@
 #include "BaseGame.h"
 
-
 #include "Window.h"
 #include "Input.h"
 
@@ -26,6 +25,7 @@ int main(void)
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+
          
         if (GetKeyState(VK_ESCAPE) & 0x8000) // escape to close
         {
@@ -48,6 +48,7 @@ int main(void)
 
     
     glDeleteProgram(shader);
+    std::cout << "program deleted" << std::endl;
     glfwTerminate();
     return 0;
 }

@@ -98,5 +98,11 @@
     <ClInclude Include="Renderer\Entity\Entity2D\Tile\Tile.h">
       <Filter>Renderer\Entity\Entity2D\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer\Shader\Shader.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Renderer\Shader\Basic.shader" />
   </ItemGroup>
 </Project>
