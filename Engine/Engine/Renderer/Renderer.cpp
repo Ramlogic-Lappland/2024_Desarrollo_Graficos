@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "shader.h"
+#include "ErrorHandler.h"
 
 Renderer::Renderer(){
 
@@ -12,7 +13,13 @@ Renderer::~Renderer() {
 
 }
 
+int locaA;
 
+float r = 0.0f;
+float g = 0.0f;
+float b = 0.0f;
+
+float increment = 0.05f;
 
 void Renderer::initBuffers() {
 
@@ -28,33 +35,52 @@ void Renderer::initBuffers() {
     unsigned int indicesSquare[] = {
         0, 1, 2,
         2, 3, 0
-    };
+    };  // SQUARE INDICES
 
     unsigned int indicesTriangle[] = {
     0, 1, 2,
-    };
+    }; //TRIANGLE INDICES
 
-	glGenBuffers(1, &buffer); //renderer
-	glBindBuffer(GL_ARRAY_BUFFER, buffer); //renderer   
-	glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW); //renderer a square (*2) no (*2) = triangle
+	GLCall(glGenBuffers(1, &buffer)); //renderer
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer)); //renderer   
+	GLCall(glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW)); //renderer a square (*2) no (*2) = triangle
 
-	glEnableVertexAttribArray(0);  //renderer
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); //renderer
+	GLCall(glEnableVertexAttribArray(0));  //renderer
+	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0)); //renderer
 
     unsigned int ibo;
-    glGenBuffers(1, &ibo); //renderer
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); //renderer
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indicesTriangle, GL_STATIC_DRAW); // change indice type to draw square or triangle
+    GLCall(glGenBuffers(1, &ibo)); //renderer
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo)); //renderer
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indicesTriangle, GL_STATIC_DRAW)); // change indice type to draw square or triangle
 }
 
 
 void Renderer::Render() {
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 
     //glDrawArrays(GL_TRIANGLES, 0, 3);  // renders just a triangle
 
+
+    glUniform4f(locaA, r, 0.3f, 0.8f, 1.0f); // color
+
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);   // renders a  square and triangle
+
+    if (GetKeyState(VK_SPACE) & 0x8000) // escape to close
+    {
+        if (r > 1.0f)
+        {
+            increment = -0.05f;
+        }
+        else if (r < 0.0f)
+        {
+            increment = 0.05f;
+        }
+
+        r += increment;
+    }
+
 }
 
 
@@ -69,14 +95,13 @@ void Renderer::initShader() {
     shaderProgramSource source = ParseShader("Renderer/Shader/Basic.shader");
 
     shader = CreateShader(source.VertexSource, source.FragmentSource);
-    glUseProgram(shader);
+    GLCall(glUseProgram(shader)); // USE PROGRAM *------------------------------*
 
-    /* test if is picking up shader
-    std::cout << "VERTEX" << std::endl;
-    std::cout << source.VertexSource << std::endl;
-    std::cout << "FRAGMENT" << std::endl;
-    std::cout << source.FragmentSource << std::endl;
-    */
+    GLCall(int location = glGetUniformLocation(shader, "u_Color"));
+    ASSERT(location != -1);
+    GLCall(glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f)); // color
+
+    locaA = location;
 
 }
 
@@ -92,10 +117,10 @@ static unsigned int CreateShader(const std::string& vertexShader, const std::str
     glAttachShader(program, fs);
 
     glLinkProgram(program);
-    glValidateProgram(program);
+    GLCall(glValidateProgram(program));
 
-    glDeleteShader(vs);
-    glDeleteShader(fs);
+    GLCall(glDeleteShader(vs));
+    GLCall(glDeleteShader(fs));
 
     return program;
 }

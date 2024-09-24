@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGame.h" />
+    <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="Renderer\Entity\Entity.h" />
     <ClInclude Include="Renderer\Entity\Entity2D\Entity2D.h" />
     <ClInclude Include="Input.h" />
@@ -102,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\glew\include;$(SolutionDir)Engine\Renderer\Entity\Entity2D;$(SolutionDir)Engine\Renderer\Entity;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Tile;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Sprite;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Shape;$(SolutionDir)Engine\Renderer\Shader;$(SolutionDir)Engine\Renderer;$(SolutionDir)lib\glfw-3.4.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\glew\include;$(SolutionDir)Engine\Renderer\Entity\Entity2D;$(SolutionDir)Engine\Renderer\Entity;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Tile;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Sprite;$(SolutionDir)Engine\Renderer\Entity\Entity2D\Shape;$(SolutionDir)Engine\Renderer\Shader;$(SolutionDir)Engine;$(SolutionDir)Engine\Renderer;$(SolutionDir)lib\glfw-3.4.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

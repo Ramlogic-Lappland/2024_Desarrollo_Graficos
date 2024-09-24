@@ -101,6 +101,9 @@
     <ClInclude Include="Renderer\Shader\Shader.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="ErrorHandler.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Renderer\Shader\Basic.shader" />

@@ -18,5 +18,7 @@ GLFWwindow* createWindow(int width, int height, const char* name)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    glfwSwapInterval(1);
+
     return window;
 }

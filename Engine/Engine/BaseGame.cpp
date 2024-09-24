@@ -5,9 +5,12 @@
 
 #include "Renderer/Renderer.h"
 
+#include "ErrorHandler.h"
+
 static unsigned int CompileShader(unsigned int type, const std::string& source);
 
 static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+
 
 
 int main(void)
@@ -19,8 +22,8 @@ int main(void)
     Renderer renderer;
     renderer.initBuffers();
 
-
     renderer.initShader();
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -36,7 +39,9 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+
         renderer.Render();
+        
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
